@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-/* GENERAL INSTRUCTION AND BACKGROUND */
+/* GENERAL INSTRUCTION AND CLASS, AND BACKGROUND */
 
 .body-wrapper {
     font-family: 'Segoe UI', sans-serif;
@@ -32,8 +32,8 @@
 }
 
 .img-icon {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background-color: white;
     object-fit: cover;
@@ -43,11 +43,23 @@ h4 {
     color: #1b1b1b;
 }
 
+.h4-light {
+    font-weight: 400;
+}
+
 h5 {
     color: #b2b2b2;
     font-weight: 600;
 }
 
+.chat {
+    height: 10%;
+    width: 100%;
+    border-bottom: 1px solid #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+}
 
 /* MAIN LEFT WINDOW */
 
@@ -70,19 +82,66 @@ h5 {
     justify-content: space-between;
 }
 
-/* sezione delle notifiche attie */
+/* sezione delle notifiche attive */
 .notification-tab {
     height: 8%;
     width: 100%;
     background-color: #8edafc;
+    display: flex;
+    align-items: center;
+}
+
+.bell {
+    margin-left: 15px;
+    object-fit: contain;
+    padding: 15px;
+}
+
+.text-info-2 {
+    padding-left: 15px;
+    color: #b2b2b2;
+}
+
+.text-info-2 > h4 {
+    font-weight: 500;
 }
 
 /* sezione della barra ricerca */
 .search-tab {
     height: 5%;
     width: 100%;
+    padding: 10px 15px;
     background-color: #fbfbfb;
 }
+
+.search-icon {
+    float: left;
+    width: 11%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.input-search {
+    float: left;
+    width: 89%;
+    height: 100%;
+}
+
+.input-search > input {
+    width: 100%;
+    height: 100%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+}
+
+
 
 /* sezione lista contatti */
 .friends-tab {
@@ -91,7 +150,24 @@ h5 {
     overflow-y: scroll;
 }
 
+.text-info-3 {
+    padding-left: 15px;
+}
 
+.contact-text-2 {
+    height: 100%;
+    width: 65%;
+    display: flex;
+    align-items: center;
+}
+
+.ora {
+    height: 100%;
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
 
 /* MAIN RIGHT WINDOW */
 
@@ -152,10 +228,6 @@ h5 {
     padding: 10px 60px;
     overflow-y: scroll;
 
-}
-
-.message-left > h4, .message-right > h4 {
-    font-weight: 500;
 }
 
 .message-left {
