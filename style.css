@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* GENERAL INSTRUCTION */
+
+.body-wrapper {
+    font-family: 'Rubik', sans-serif;
+    width: 100%;
+    height: 100vh;
+}
+
+.back-uniform-green {
+    height: 15%;
+    background-color: #358675;
+}
+
+.back-uniform-stone {
+    height: 85%;
+    background-color: #d2d4c9;
+}
