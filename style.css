@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-/* GENERAL INSTRUCTION AND CLASS, AND BACKGROUND */
+/* GENERAL CLASS AND GENERAL INSTRUCTION */
 
 .body-wrapper {
     font-family: 'Segoe UI', sans-serif;
@@ -37,6 +37,7 @@
     border-radius: 50%;
     background-color: white;
     object-fit: cover;
+    cursor: pointer;
 }
 
 h4 {
@@ -59,7 +60,14 @@ h5 {
     display: flex;
     justify-content: space-between;
     padding: 0 15px;
+    cursor: pointer;
 }
+
+.chat:hover {
+    background-color: #eaeaea;
+}
+
+
 
 /* MAIN LEFT WINDOW */
 
@@ -89,6 +97,7 @@ h5 {
     background-color: #8edafc;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .bell {
@@ -106,6 +115,19 @@ h5 {
     font-weight: 500;
 }
 
+.text-info-2 > h5 {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.fa-times {
+    font-size: 18px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+}
+
 /* sezione della barra ricerca */
 .search-tab {
     height: 5%;
@@ -119,6 +141,7 @@ h5 {
     width: 11%;
     height: 100%;
     background-color: white;
+    color: #b2b2b2;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -141,8 +164,6 @@ h5 {
     padding: 5px 10px;
 }
 
-
-
 /* sezione lista contatti */
 .friends-tab {
     height: 80%;
@@ -150,17 +171,23 @@ h5 {
     overflow-y: scroll;
 }
 
-.text-info-3 {
-    padding-left: 15px;
-}
-
 .contact-text-2 {
     height: 100%;
-    width: 65%;
+    width: 75%;
     display: flex;
     align-items: center;
 }
 
+.text-info-3 {
+    padding-left: 15px;
+    width: 78%;
+}
+
+.text-info-3 > h5 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 .ora {
     height: 100%;
     width: 35%;
@@ -168,6 +195,10 @@ h5 {
     align-items: center;
     justify-content: flex-end;
 }
+
+
+
+
 
 /* MAIN RIGHT WINDOW */
 
@@ -202,6 +233,7 @@ h5 {
 
 .text-info {
     padding-left: 15px;
+    cursor: pointer;
 }
 
 .icons-contact {
@@ -216,6 +248,11 @@ h5 {
     padding-right: 15px;
     font-size: 17px;
     color: #b2b2b2;
+    cursor: pointer;
+}
+
+.icons-contact > i:hover {
+    color: grey;
 }
 
 /* sezione della chat centrale */
@@ -239,6 +276,15 @@ h5 {
     padding: 20px;
     margin-bottom: 30px;
     font-weight: 500;
+    position: relative;
+}
+
+.ora-text-chat {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 12px;
+    color: #b2b2b2;
 }
 
 .message-right {
@@ -249,6 +295,23 @@ h5 {
     padding: 20px;
     margin-bottom: 30px;
     font-weight: 500;
+    position: relative;
+}
+
+.ora-text-chat-user {
+    position: absolute;
+    bottom: 5px;
+    right: 28px;
+    font-size: 12px;
+    color: #b2b2b2;
+}
+
+.check-read {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 12px;
+    color: #64b1f8;
 }
 
 /* sezione del testo in basso */
@@ -272,6 +335,17 @@ h5 {
     justify-content: center;
 }
 
+.microphone {
+    width: 10%;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.fa-smile, .fa-microphone {
+    cursor: pointer;
+}
+
 .input {
     width: 80%;
     display: flex;
@@ -290,11 +364,4 @@ h5 {
 .input > input:focus {
     outline-width: 0;
 
-}
-
-.microphone {
-    width: 10%;
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
 }
