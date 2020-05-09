@@ -54,6 +54,11 @@ h5 {
     font-weight: 600;
 }
 
+i:active {
+    transform:scale(0.7);
+    transition: 0.3s ease;
+}
+
 .chat {
     height: 10%;
     width: 100%;
@@ -196,8 +201,6 @@ h5 {
     align-items: center;
     justify-content: flex-end;
 }
-
-
 
 
 
