@@ -1,11 +1,15 @@
+
+// rimuovo la classe/icona microfono e metto quella dell'invio quando sono in focus sull'input
 $('#message-text').focus(function() {
     $('#mes-but').removeClass('fa-microphone').addClass('fa-paper-plane');
-})
+});
 
+// ri-assegno la classe iniziale all'icona una volta usate le due funzioni sotto (click o invio tastiera)
 $('#message-text').blur(function() {
     $('#mes-but').removeClass('fa-paper-plane').addClass('fa-microphone');
-})
+});
 
+// funzione che si attiva quando clicco sull'icona "invio"
 $('.microphone').mousedown(function() {
 
     if ($('#mes-but').hasClass('fa-paper-plane')) {
@@ -23,13 +27,14 @@ $('.microphone').mousedown(function() {
         // appendo il nuovo fumetto risposta utente
         $('.central-tab').append(nuovo_testo_utente);
 
-        // faccio ritornare l'input vuoto al valore iniziale e ri-assegno la classe iniziale all'icona
+        // faccio ritornare l'input vuoto al valore iniziale
         testo_utente = $('#message-text').val('');
-        $('#mes-but').removeClass('fa-paper-plane').addClass('fa-microphone');
+        // $('#mes-but').removeClass('fa-paper-plane').addClass('fa-microphone');
     }
 
-})
+});
 
+// funzione che si attiva quando clicco il tasto "invio" sulla tastiera
 $('#message-text').keyup(function( event ) {
 
     if ( event.which == 13 && $('#mes-but').hasClass('fa-paper-plane')) {
@@ -51,6 +56,14 @@ $('#message-text').keyup(function( event ) {
         testo_utente = $('#message-text').val('');
     }
 });
+
+
+
+
+
+
+
+
 //
 // $(document).click(function(event) {
 //     var target = $(event.target);
