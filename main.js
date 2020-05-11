@@ -30,6 +30,9 @@ $('.microphone').mousedown(function() {
         // faccio ritornare l'input vuoto al valore iniziale
         testo_utente = $('#message-text').val('');
         // $('#mes-but').removeClass('fa-paper-plane').addClass('fa-microphone');
+
+        // dopo che ho scritto il mio messaggio e resettato l'input, visualizzo la risposta pre-impostata del computer
+        setTimeout(genero_risposta_pc, 1000);
     }
 
 });
@@ -54,9 +57,17 @@ $('#message-text').keyup(function( event ) {
 
         // faccio ritornare l'input vuoto al valore iniziale e ri-assegno la classe iniziale all'icona
         testo_utente = $('#message-text').val('');
+
+        // dopo che ho scritto il mio messaggio e resettato l'input, visualizzo la risposta pre-impostata del computer
+        setTimeout(genero_risposta_pc, 1000);
     }
 });
 
+
+function genero_risposta_pc() {
+    var risposta_template2 = $('.template-2 .message-left').clone();
+    $('.central-tab').append(risposta_template2);
+}
 
 
 
