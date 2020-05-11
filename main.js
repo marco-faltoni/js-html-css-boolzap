@@ -21,10 +21,26 @@ $('.microphone').click(function() {
     testo_utente = $('#message-text').val('');
 })
 
+$('.input').keydown(function( event ) {
+  if ( event.which == 13 ) {
+      // leggo il testo inserito dall'utente
+      var testo_utente = $('#message-text').val();
+      console.log(testo_utente);
 
+      // copio elemento template
+      var nuovo_testo_utente = $('.template .message-right').clone();
+      console.log(nuovo_testo_utente);
 
+      // inserisco il testo letto dall'input
+      nuovo_testo_utente.find('.h4-light').text(testo_utente);
 
+      // appendo il nuovo fumetto risposta utente
+      $('.central-tab').append(nuovo_testo_utente);
 
+      // faccio ritornare l'input vuoto al valore iniziale
+      testo_utente = $('#message-text').val('');
+  }
+});
 
 
 
