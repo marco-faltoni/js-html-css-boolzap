@@ -1,10 +1,10 @@
 $('.input').click(function() {
-    $('.fa-microphone').removeClass('fa-microphone').addClass('fa-paper-plane');
+    $('#mes-but').removeClass('fa-microphone').addClass('fa-paper-plane');
 })
 
 $('.microphone').click(function() {
 
-    if ($('.fas').hasClass('fa-paper-plane')) {
+    if ($('#mes-but').hasClass('fa-paper-plane')) {
 
         // leggo il testo inserito dall'utente
         var testo_utente = $('#message-text').val();
@@ -23,13 +23,13 @@ $('.microphone').click(function() {
         // faccio ritornare l'input vuoto al valore iniziale
         testo_utente = $('#message-text').val('');
 
-        $('.fa-paper-plane').removeClass('fa-paper-plane').addClass('fa-microphone');
+        $('#mes-but').removeClass('fa-paper-plane').addClass('fa-microphone');
     }
 })
 
 $('.input').keydown(function( event ) {
 
-  if ( event.which == 13 && $('.fas').hasClass('fa-paper-plane')) {
+  if ( event.which == 13 && $('#mes-but').hasClass('fa-paper-plane')) {
       // leggo il testo inserito dall'utente
       var testo_utente = $('#message-text').val();
       console.log(testo_utente);
@@ -46,7 +46,7 @@ $('.input').keydown(function( event ) {
 
       // faccio ritornare l'input vuoto al valore iniziale
       testo_utente = $('#message-text').val('');
-      $('.fa-paper-plane').removeClass('fa-paper-plane').addClass('fa-microphone');
+      $('#mes-but').removeClass('fa-paper-plane').addClass('fa-microphone');
   }
 });
 
