@@ -346,7 +346,7 @@ i:active {
     justify-content: center;
 }
 
-.fa-smile, .fa-microphone {
+.fa-smile, .fa-microphone, .fa-paper-plane {
     cursor: pointer;
 }
 

@@ -2,11 +2,11 @@ $('#message-text').focus(function() {
     $('#mes-but').removeClass('fa-microphone').addClass('fa-paper-plane');
 })
 
-// $('#message-text').blur(function() {
-//     $('#mes-but').removeClass('fa-paper-plane').addClass('fa-microphone');
-// })
+$('#message-text').blur(function() {
+    $('#mes-but').removeClass('fa-paper-plane').addClass('fa-microphone');
+})
 
-$('.microphone').click(function() {
+$('.microphone').mousedown(function() {
 
     if ($('#mes-but').hasClass('fa-paper-plane')) {
         // leggo il testo inserito dall'utente
@@ -51,7 +51,7 @@ $('#message-text').keyup(function( event ) {
         testo_utente = $('#message-text').val('');
     }
 });
-
+//
 // $(document).click(function(event) {
 //     var target = $(event.target);
 //
