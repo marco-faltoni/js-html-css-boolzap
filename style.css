@@ -368,3 +368,8 @@ i:active {
     outline-width: 0;
 
 }
+
+
+.template {
+    display: none;
+}
