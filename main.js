@@ -12,10 +12,12 @@ $('#message-text').blur(function() {
 // funzione che si attiva quando clicco sull'icona "invio"
 $('.microphone').mousedown(function() {
 
-    if ($('#mes-but').hasClass('fa-paper-plane')) {
-        // leggo il testo inserito dall'utente
-        var testo_utente = $('#message-text').val();
-        console.log(testo_utente);
+    // leggo il testo inserito dall'utente
+    var testo_utente = $('#message-text').val();
+    console.log(testo_utente);
+
+    // imposto come condizioni che ci sia la classe/icona di invio e che il testo utente non sia vuoto, altrimenti non entra nella condizione
+    if ($('#mes-but').hasClass('fa-paper-plane') && testo_utente !==("")) {
 
         // copio elemento template
         var nuovo_testo_utente = $('.template .message-right').clone();
@@ -33,6 +35,11 @@ $('.microphone').mousedown(function() {
 
         // dopo che ho scritto il mio messaggio e resettato l'input, visualizzo la risposta pre-impostata del computer
         setTimeout(genero_risposta_pc, 1000);
+    } else {
+        // $('.input').addClass('ahashakeheartache');
+        // $('.input').on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e){
+        //     $('.input').delay(200).removeClass('ahashakeheartache');
+        // });
     }
 
 });
@@ -40,10 +47,12 @@ $('.microphone').mousedown(function() {
 // funzione che si attiva quando clicco il tasto "invio" sulla tastiera
 $('#message-text').keyup(function( event ) {
 
-    if ( event.which == 13 && $('#mes-but').hasClass('fa-paper-plane')) {
-        // leggo il testo inserito dall'utente
-        var testo_utente = $('#message-text').val();
-        console.log(testo_utente);
+    // leggo il testo inserito dall'utente
+    var testo_utente = $('#message-text').val();
+    console.log(testo_utente);
+
+    // imposto come condizioni che venga premuto il tasto invio, che ci sia la classe/icona di invio e che il testo utente non sia vuoto, altrimenti non entra nella condizione
+    if ( event.which == 13 && $('#mes-but').hasClass('fa-paper-plane') && testo_utente !==("")) {
 
         // copio elemento template
         var nuovo_testo_utente = $('.template .message-right').clone();
@@ -60,10 +69,13 @@ $('#message-text').keyup(function( event ) {
 
         // dopo che ho scritto il mio messaggio e resettato l'input, visualizzo la risposta pre-impostata del computer
         setTimeout(genero_risposta_pc, 1000);
+    } else {
+        // $('.input').addClass('ahashakeheartache');
+        // $(this).delay(200).removeClass('ahashaskeheartache');
     }
 });
 
-// Milestone 2 prima parte - con questa funzione faccio apparire il template2 già presento ma nascosto.
+// Milestone 2 prima parte - con questa funzione faccio apparire il template2 già presente ma nascosto.
 function genero_risposta_pc() {
     var risposta_template2 = $('.template-2 .message-left').clone();
     $('.central-tab').append(risposta_template2);
@@ -74,6 +86,10 @@ $('.notification-tab span .fa-times').click(function() {
     $('.notification-tab').slideUp();
     $('.friends-tab').removeClass('friends-tab').addClass('when-slideUp');
 })
+
+
+
+
 
 
 
