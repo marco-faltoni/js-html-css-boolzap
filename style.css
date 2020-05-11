@@ -368,7 +368,13 @@ i:active {
     outline-width: 0;
 }
 
-
+/* classi utili per Javascript */
 .template, .template-2 {
     display: none;
+}
+
+.when-slideUp {
+    height: calc(100% - 70px - 50px);
+    width: 100%;
+    overflow-y: scroll;
 }

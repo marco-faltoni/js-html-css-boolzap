@@ -63,14 +63,17 @@ $('#message-text').keyup(function( event ) {
     }
 });
 
-
+// Milestone 2 prima parte - con questa funzione faccio apparire il template2 già presento ma nascosto.
 function genero_risposta_pc() {
     var risposta_template2 = $('.template-2 .message-left').clone();
     $('.central-tab').append(risposta_template2);
 }
 
-
-
+// se clicco sulla "x" nella sezione ricevi notifiche, questa scompare, e riorganizzo l'altezza della sezione contatti
+$('.notification-tab span .fa-times').click(function() {
+    $('.notification-tab').slideUp();
+    $('.friends-tab').removeClass('friends-tab').addClass('when-slideUp');
+})
 
 
 
