@@ -60,7 +60,7 @@ i:active {
 }
 
 .chat {
-    height: 10%;
+    height: 70px;
     width: 100%;
     border-bottom: 1px solid #f1f1f1;
     display: flex;
@@ -88,7 +88,7 @@ i:active {
 
 /* sezione del contatto alta */
 .user-tab {
-    height: 7%;
+    height: 70px;
     width: 100%;
     background-color: #eaeaea;
     border-right: 0.5px solid #b2b2b2;
@@ -98,7 +98,7 @@ i:active {
 
 /* sezione delle notifiche attive */
 .notification-tab {
-    height: 8%;
+    height: 80px;
     width: 100%;
     background-color: #8edafc;
     display: flex;
@@ -136,7 +136,7 @@ i:active {
 
 /* sezione della barra ricerca */
 .search-tab {
-    height: 5%;
+    height: 50px;
     width: 100%;
     padding: 10px 15px;
     background-color: #fbfbfb;
@@ -172,7 +172,7 @@ i:active {
 
 /* sezione lista contatti */
 .friends-tab {
-    height: 80%;
+    height: calc(100% - 70px - 80px - 50px);
     width: 100%;
     overflow-y: scroll;
 }
@@ -217,7 +217,7 @@ i:active {
 
 /* sezione del contatto alta */
 .contact-tab {
-    height: 7%;
+    height: 70px;
     width: 100%;
     background-color: #eaeaea;
     display: flex;
@@ -261,7 +261,7 @@ i:active {
 
 /* sezione della chat centrale */
 .central-tab {
-    height: 86%;
+    height: calc(100% - 70px - 70px);
     width: 100%;
     background-image: url('img/wallpaper.jpg');
     background-size: contain;
@@ -320,7 +320,7 @@ i:active {
 
 /* sezione del testo in basso */
 .text-tab {
-    height: 7%;
+    height: 70px;
     width: 100%;
     background-color: #f3eeea;
     display: flex;
