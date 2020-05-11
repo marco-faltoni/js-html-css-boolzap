@@ -370,6 +370,6 @@ i:active {
 }
 
 
-.template {
+.template, .template-2 {
     display: none;
 }
