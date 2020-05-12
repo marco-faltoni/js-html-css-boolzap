@@ -10,14 +10,32 @@ $('#message-text').blur(function() {
 });
 
 // funzione che si attiva quando clicco sull'icona "invio"
-$('.microphone').mousedown(function() {
+$('.microphone').mousedown(invia_messaggio);
+
+// funzione che si attiva quando clicco il tasto "invio" sulla tastiera
+$('#message-text').keypress(function( event ) {
 
     // leggo il testo inserito dall'utente
+    var testo_utente = $('#message-text').val();
+
+    // imposto come condizioni che venga premuto il tasto invio, che ci sia la classe/icona di invio e che il testo utente non sia vuoto, altrimenti non entra nella condizione
+    if ( event.which == 13 && $('#mes-but').hasClass('fa-paper-plane') && testo_utente.trim() !==("")) {
+
+        invia_messaggio();
+
+    } else {
+        // $('.input').addClass('ahashakeheartache');
+        // $(this).delay(200).removeClass('ahashaskeheartache');
+    }
+});
+
+function invia_messaggio() {
+        // leggo il testo inserito dall'utente
     var testo_utente = $('#message-text').val();
     console.log(testo_utente);
 
     // imposto come condizioni che ci sia la classe/icona di invio e che il testo utente non sia vuoto, altrimenti non entra nella condizione
-    if ($('#mes-but').hasClass('fa-paper-plane') && testo_utente !==("")) {
+    if ($('#mes-but').hasClass('fa-paper-plane') && testo_utente.trim() !==("")) {
 
         // copio elemento template
         var nuovo_testo_utente = $('.template .message-right').clone();
@@ -41,39 +59,7 @@ $('.microphone').mousedown(function() {
         //     $('.input').delay(200).removeClass('ahashakeheartache');
         // });
     }
-
-});
-
-// funzione che si attiva quando clicco il tasto "invio" sulla tastiera
-$('#message-text').keyup(function( event ) {
-
-    // leggo il testo inserito dall'utente
-    var testo_utente = $('#message-text').val();
-    console.log(testo_utente);
-
-    // imposto come condizioni che venga premuto il tasto invio, che ci sia la classe/icona di invio e che il testo utente non sia vuoto, altrimenti non entra nella condizione
-    if ( event.which == 13 && $('#mes-but').hasClass('fa-paper-plane') && testo_utente !==("")) {
-
-        // copio elemento template
-        var nuovo_testo_utente = $('.template .message-right').clone();
-        console.log(nuovo_testo_utente);
-
-        // inserisco il testo letto dall'input
-        nuovo_testo_utente.find('.h4-light').text(testo_utente);
-
-        // appendo il nuovo fumetto risposta utente
-        $('.central-tab').append(nuovo_testo_utente);
-
-        // faccio ritornare l'input vuoto al valore iniziale e ri-assegno la classe iniziale all'icona
-        testo_utente = $('#message-text').val('');
-
-        // dopo che ho scritto il mio messaggio e resettato l'input, visualizzo la risposta pre-impostata del computer
-        setTimeout(genero_risposta_pc, 1000);
-    } else {
-        // $('.input').addClass('ahashakeheartache');
-        // $(this).delay(200).removeClass('ahashaskeheartache');
-    }
-});
+}
 
 // Milestone 2 prima parte - con questa funzione faccio apparire il template2 già presente ma nascosto.
 function genero_risposta_pc() {
@@ -89,8 +75,44 @@ $('.notification-tab span .fa-times').click(function() {
 
 
 
+$('.search-icon .fa-search').click(function() {
+    var testo_utente = $('#search-bar').val().trim().toLowerCase();
+    console.log(testo_utente);
 
+    if (testo_utente != '') {
+        $('.friends-tab .chat .contact-text-2 .text-info-3 h4').each(function(){
+            var testo_contatti = $(this).text().toLowerCase();
+            console.log('testo li: ' + testo_contatti);
+            if (testo_contatti == testo_utente) {
+                $(this).show();
+            } else {
+                $(this).closest('.chat').hide();
+            }
+        });
+    } else {
+        $('.friends-tab .chat').show();
+    }
+});
 
+$('#search-bar').keypress(function(event){
+    // leggo il testo inserito dall'utente
+    var testo_utente = $('#search-bar').val().trim().toLowerCase();
+
+    // imposto come condizioni che venga premuto il tasto invio, che ci sia la classe/icona di invio e che il testo utente non sia vuoto, altrimenti non entra nella condizione
+    if ( event.which == 13 && testo_utente !==("")) {
+        $('.friends-tab .chat .contact-text-2 .text-info-3 h4').each(function(){
+            var testo_contatti = $(this).text().toLowerCase();
+            console.log('testo li: ' + testo_contatti);
+            if (testo_contatti == testo_utente) {
+                $(this).show();
+            } else {
+                $(this).closest('.chat').hide();
+            }
+        });
+    } else {
+        $('.friends-tab .chat').show();
+    }
+})
 
 
 
