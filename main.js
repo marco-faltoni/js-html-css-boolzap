@@ -1,4 +1,6 @@
 
+// Milestone 1
+
 // rimuovo la classe/icona microfono e metto quella dell'invio quando sono in focus sull'input
 $('#message-text').focus(function() {
     $('#mes-but').removeClass('fa-microphone').addClass('fa-paper-plane');
@@ -67,13 +69,8 @@ function genero_risposta_pc() {
     $('.central-tab').append(risposta_template2);
 }
 
-// se clicco sulla "x" nella sezione ricevi notifiche, questa scompare, e riorganizzo l'altezza della sezione contatti
-$('.notification-tab span .fa-times').click(function() {
-    $('.notification-tab').slideUp();
-    $('.friends-tab').removeClass('friends-tab').addClass('when-slideUp');
-})
 
-
+// Milestone 2 seconda parte - SEARCH BAR
 $("#search-bar").keyup(function() {
 
      // leggo il testo inserito dall'utente e imposto a 0 la conta
@@ -96,6 +93,36 @@ $("#search-bar").keyup(function() {
         $('.friends-tab .chat').show();
     }
 });
+
+
+// Milestone 3 seconda parte - cancellare messaggi
+$('.message-options').click(function(){
+
+    var sottomenu = $(this).next('.message-options-panel');
+
+    if(sottomenu.is(':visible')) {
+        // se sì => ho cliccato la stessa voce per chiuderlo
+        sottomenu.hide();
+    } else {
+        // se no => ho cliccato una nuova voce per aprirlo
+        // chiudo altri eventuali dropdown aperti in precedenza
+        $('.message-options-panel').hide();
+        // visualizzo il menu dropdown
+        sottomenu.show();
+    }
+});
+
+$('.message-destroy').click(function(){
+    $(this).closest('.message-right').hide();
+});
+
+
+
+
+
+
+
+
 
 
 // MEDOTO DELLA SEARCH BAR PIU SEMPLICE E STATICO
@@ -141,12 +168,17 @@ $("#search-bar").keyup(function() {
 
 
 
+// // se clicco sulla "x" nella sezione ricevi notifiche, questa scompare, e riorganizzo l'altezza della sezione contatti
+// $('.notification-tab span .fa-times').click(function() {
+//     $('.notification-tab').slideUp();
+//     $('.friends-tab').removeClass('friends-tab').addClass('when-slideUp');
+// })
 
-//
-// $(document).click(function(event) {
-//     var target = $(event.target);
-//
-//     if (!target.hasClass('fa-microphone') && !target.hasClass('fa-paper-plane')) {
-//         $('#mes-but').removeClass('fa-paper-plane').addClass('fa-microphone');
-//     }
+
+
+// $('.message-right').click(function(event) {
+//     console.log('event.target:');
+//     console.log(event.target);
+//     console.log('this:');
+//     console.log(this);
 // });
