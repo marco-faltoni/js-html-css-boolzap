@@ -143,12 +143,7 @@ $('.message-options').click(function(){
 
 });
 
-// $('.chat').click(function(){
-//     $('.window-right > div').hide();
-//     var nuova_chat_utente = $('.template-3 > div').clone();
-//     $('.window-right').append(nuova_chat_utente).show();
-//
-// });
+
 
 // function sottomenu_e_cancella() {
 //     $('.message-options').click(function(){
@@ -174,7 +169,12 @@ $('.message-options').click(function(){
 // }
 
 
-
+// $('.chat').click(function(){
+//     $('.window-right > div').hide();
+//     var nuova_chat_utente = $('.template-3 > div').clone();
+//     $('.window-right').append(nuova_chat_utente).show();
+//
+// });
 
 
 
