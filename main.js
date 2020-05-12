@@ -55,12 +55,37 @@ function invia_messaggio() {
 
         // dopo che ho scritto il mio messaggio e resettato l'input, visualizzo la risposta pre-impostata del computer
         setTimeout(genero_risposta_pc, 1000);
+
+        // Milestone 3 - cancello, se voglio, il messaggio appena creato dall'utente
+        // $('.message-options').click(function(){
+        //
+        //     var sottomenu = $(this).next('.message-options-panel');
+        //     console.log(sottomenu);
+        //     if(sottomenu.is(':visible')) {
+        //         // se sì => ho cliccato la stessa voce per chiuderlo
+        //         sottomenu.hide();
+        //     } else {
+        //         // se no => ho cliccato una nuova voce per aprirlo
+        //         // chiudo altri eventuali dropdown aperti in precedenza
+        //         $('.message-options-panel').hide();
+        //         // visualizzo il menu dropdown
+        //         sottomenu.show();
+        //     }
+        //
+        //     $('.message-destroy').click(function(){
+        //         $(this).closest('.message-right').hide();
+        //     });
+        //
+        // });
+
+
     } else {
         // $('.input').addClass('ahashakeheartache');
         // $('.input').on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e){
         //     $('.input').delay(200).removeClass('ahashakeheartache');
         // });
     }
+
 }
 
 // Milestone 2 prima parte - con questa funzione faccio apparire il template2 già presente ma nascosto.
@@ -96,10 +121,11 @@ $("#search-bar").keyup(function() {
 
 
 // Milestone 3 seconda parte - cancellare messaggi
+
 $('.message-options').click(function(){
 
     var sottomenu = $(this).next('.message-options-panel');
-
+    console.log(sottomenu);
     if(sottomenu.is(':visible')) {
         // se sì => ho cliccato la stessa voce per chiuderlo
         sottomenu.hide();
@@ -110,15 +136,42 @@ $('.message-options').click(function(){
         // visualizzo il menu dropdown
         sottomenu.show();
     }
+
+    $('.message-destroy').click(function(){
+        $(this).closest('.message-right').hide();
+    });
+
 });
 
-$('.message-destroy').click(function(){
-    $(this).closest('.message-right').hide();
-});
+// $('.chat').click(function(){
+//     $('.window-right > div').hide();
+//     var nuova_chat_utente = $('.template-3 > div').clone();
+//     $('.window-right').append(nuova_chat_utente).show();
+//
+// });
 
-
-
-
+// function sottomenu_e_cancella() {
+//     $('.message-options').click(function(){
+//
+//         var sottomenu = $(this).next('.message-options-panel');
+//         console.log(sottomenu);
+//         if(sottomenu.is(':visible')) {
+//             // se sì => ho cliccato la stessa voce per chiuderlo
+//             sottomenu.hide();
+//         } else {
+//             // se no => ho cliccato una nuova voce per aprirlo
+//             // chiudo altri eventuali dropdown aperti in precedenza
+//             $('.message-options-panel').hide();
+//             // visualizzo il menu dropdown
+//             sottomenu.show();
+//         }
+//
+//         $('.message-destroy').click(function(){
+//             $(this).closest('.message-right').hide();
+//         });
+//
+//     });
+// }
 
 
 
