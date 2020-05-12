@@ -77,7 +77,7 @@ $('.notification-tab span .fa-times').click(function() {
 $("#search-bar").keyup(function() {
 
      // leggo il testo inserito dall'utente e imposto a 0 la conta
-    var testo_utente = $('#search-bar').val().trim().toLowerCase();
+    var testo_utente = $(this).val().trim().toLowerCase();
     count = 0;
 
     // inizio il loop attraverso la lista, mettendo come condizione che la stringa non sia vuota, altrimenti faccio vedere tutti i contatti
@@ -89,6 +89,7 @@ $("#search-bar").keyup(function() {
               // mostro le liste dei contatti se la parola immessa matcha con quello che ho scrivo, e incremento il count
             } else {
               $(this).show();
+              $('.chat').show();
               count++;
             }
         });
@@ -97,8 +98,32 @@ $("#search-bar").keyup(function() {
     }
 });
 
+$("#filter").keyup(function() {
+
+  // Retrieve the input field text and reset the count to zero
+  var filter = $(this).val(),
+    count = 0;
+
+  // Loop through the comment list
+  $('#results div').each(function() {
 
 
+    // If the list item does not contain the text phrase fade it out
+    if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+      $(this).hide();
+
+      // Show the list item if the phrase matches and increase the count by 1
+    } else {
+      $(this).show();
+      count++;
+    }
+
+  });
+
+});
+
+
+// MEDOTO DELLA SEARCH BAR PIU SEMPLICE E STATICO
 // $('#search-bar').keypress(function(event){
 //     // leggo il testo inserito dall'utente
 //     var testo_utente = $('#search-bar').val().trim().toLowerCase();
@@ -137,6 +162,8 @@ $("#search-bar").keyup(function() {
 //         $('.friends-tab .chat').show();
 //     }
 // });
+// FINE DEL METODO PIU SEMPLICE
+
 
 
 
