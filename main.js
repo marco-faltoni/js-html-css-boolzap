@@ -88,8 +88,7 @@ $("#search-bar").keyup(function() {
                 $(this).closest('.chat').hide();
               // mostro le liste dei contatti se la parola immessa matcha con quello che ho scrivo, e incremento il count
             } else {
-              $(this).show();
-              $('.chat').show();
+              $(this).closest('.chat').show();
               count++;
             }
         });
@@ -98,6 +97,29 @@ $("#search-bar").keyup(function() {
     }
 });
 
+$("#filter").keyup(function() {
+
+  // Retrieve the input field text and reset the count to zero
+  var filter = $(this).val(),
+    count = 0;
+
+  // Loop through the comment list
+  $('#results div').each(function() {
+
+
+    // If the list item does not contain the text phrase fade it out
+    if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+      $(this).hide();
+
+      // Show the list item if the phrase matches and increase the count by 1
+    } else {
+      $(this).show();
+      count++;
+    }
+
+  });
+
+});
 
 
 // MEDOTO DELLA SEARCH BAR PIU SEMPLICE E STATICO
