@@ -74,19 +74,22 @@ $('.notification-tab span .fa-times').click(function() {
 })
 
 
+$("#search-bar").keyup(function() {
 
-$('.search-icon .fa-search').click(function() {
+     // leggo il testo inserito dall'utente e imposto a 0 la conta
     var testo_utente = $('#search-bar').val().trim().toLowerCase();
-    console.log(testo_utente);
+    count = 0;
 
-    if (testo_utente != '') {
-        $('.friends-tab .chat .contact-text-2 .text-info-3 h4').each(function(){
-            var testo_contatti = $(this).text().toLowerCase();
-            console.log('testo li: ' + testo_contatti);
-            if (testo_contatti == testo_utente) {
-                $(this).show();
-            } else {
+    // inizio il loop attraverso la lista, mettendo come condizione che la stringa non sia vuota, altrimenti faccio vedere tutti i contatti
+    if (testo_utente !==("")) {
+        $('.friends-tab .chat .contact-text-2 .text-info-3 h4').each(function() {
+            // se le liste contatti non contengono una delle parola immesse, le nascondo
+            if ($(this).text().toLowerCase().search(new RegExp(testo_utente, "i")) < 0) {
                 $(this).closest('.chat').hide();
+              // mostro le liste dei contatti se la parola immessa matcha con quello che ho scrivo, e incremento il count
+            } else {
+              $(this).show();
+              count++;
             }
         });
     } else {
@@ -94,25 +97,46 @@ $('.search-icon .fa-search').click(function() {
     }
 });
 
-$('#search-bar').keypress(function(event){
-    // leggo il testo inserito dall'utente
-    var testo_utente = $('#search-bar').val().trim().toLowerCase();
 
-    // imposto come condizioni che venga premuto il tasto invio, che ci sia la classe/icona di invio e che il testo utente non sia vuoto, altrimenti non entra nella condizione
-    if ( event.which == 13 && testo_utente !==("")) {
-        $('.friends-tab .chat .contact-text-2 .text-info-3 h4').each(function(){
-            var testo_contatti = $(this).text().toLowerCase();
-            console.log('testo li: ' + testo_contatti);
-            if (testo_contatti == testo_utente) {
-                $(this).show();
-            } else {
-                $(this).closest('.chat').hide();
-            }
-        });
-    } else {
-        $('.friends-tab .chat').show();
-    }
-})
+
+// $('#search-bar').keypress(function(event){
+//     // leggo il testo inserito dall'utente
+//     var testo_utente = $('#search-bar').val().trim().toLowerCase();
+//
+//     // imposto come condizioni che venga premuto il tasto invio, che ci sia la classe/icona di invio e che il testo utente non sia vuoto, altrimenti non entra nella condizione
+//     if ( event.which == 13 && testo_utente !==("")) {
+//         $('.friends-tab .chat .contact-text-2 .text-info-3 h4').each(function(){
+//             var testo_contatti = $(this).text().toLowerCase();
+//             console.log('testo li: ' + testo_contatti);
+//             if (testo_contatti == testo_utente) {
+//                 $(this).show();
+//             } else {
+//                 $(this).closest('.chat').hide();
+//             }
+//         });
+//     } else {
+//         $('.friends-tab .chat').show();
+//     }
+// })
+
+// $('.search-icon .fa-search').click(function() {
+//     var testo_utente = $('#search-bar').val().trim().toLowerCase();
+//     console.log(testo_utente);
+//
+//     if (testo_utente != '') {
+//         $('.friends-tab .chat .contact-text-2 .text-info-3 h4').each(function(){
+//             var testo_contatti = $(this).text().toLowerCase();
+//             console.log('testo li: ' + testo_contatti);
+//             if (testo_contatti == testo_utente) {
+//                 $(this).show();
+//             } else {
+//                 $(this).closest('.chat').hide();
+//             }
+//         });
+//     } else {
+//         $('.friends-tab .chat').show();
+//     }
+// });
 
 
 
