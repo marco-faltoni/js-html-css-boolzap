@@ -224,14 +224,14 @@ i:active {
     justify-content: space-between;
 }
 
-.contact-text {
+.contact-text, .contact-text-3 {
     height: 100%;
     width: 65%;
     display: flex;
     align-items: center;
 }
 
-.contact-text > img {
+.contact-text > img, .contact-text-3 > img {
     margin-left: 15px;
 }
 
@@ -417,6 +417,9 @@ i:active {
     overflow-y: scroll;
 }
 
+#access {
+    display: none;
+}
 
 
 

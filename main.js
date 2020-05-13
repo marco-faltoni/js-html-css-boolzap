@@ -104,9 +104,15 @@ $("#search-bar").keyup(function() {
 $('.friends-tab .chat').click(function(){
     $('.central-tab').removeClass('main-visible');
     var data_chat = $(this).attr('data-finestra-chat');
-    console.log(data_chat);
-
+    // console.log(data_chat);
     $('.central-tab[data-finestra-chat="'+ data_chat +'"]').addClass('main-visible');
+
+    var recupero_nome = $(this).find('.text-info-3 h4').text();
+    // console.log(recupero_nome);
+    $('.text-info h4').text(recupero_nome);
+
+    var recupero_immagine = $(this).find('img').attr('src');
+    $('.contact-text img').attr('src', recupero_immagine);
 });
 
 
@@ -227,12 +233,3 @@ $(document).on('click', '.message-options', function(){
 //     $('.notification-tab').slideUp();
 //     $('.friends-tab').removeClass('friends-tab').addClass('when-slideUp');
 // })
-
-
-
-// $('.message-right').click(function(event) {
-//     console.log('event.target:');
-//     console.log(event.target);
-//     console.log('this:');
-//     console.log(this);
-// });
