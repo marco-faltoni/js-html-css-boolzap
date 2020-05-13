@@ -271,16 +271,20 @@ i:active {
 
 }
 
-.message-left {
-    width: 70%;
-    float: left;
-    clear: both;
-    background-color: #f8f8f8;
+.message {
     border-radius: 15px;
     padding: 20px;
     margin-bottom: 30px;
     font-weight: 500;
     position: relative;
+}
+
+.left {
+    width: 70%;
+    float: left;
+    clear: both;
+    background-color: #f8f8f8;
+
 }
 
 .ora-text-chat {
@@ -291,15 +295,10 @@ i:active {
     color: #b2b2b2;
 }
 
-.message-right {
+.right {
     float: right;
     clear: both;
     background-color: #e1f7ca;
-    border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 30px;
-    font-weight: 500;
-    position: relative;
 }
 
 .ora-text-chat-user {
@@ -318,7 +317,7 @@ i:active {
     color: #64b1f8;
 }
 
-.message-right:hover .message-options{
+.message:hover .message-options {
     display: block;
 }
 
@@ -404,7 +403,7 @@ i:active {
 }
 
 /* classi utili per Javascript */
-.template, .template-2, .template-3 {
+.template, .template-2 {
     display: none;
 }
 

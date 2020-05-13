@@ -40,8 +40,8 @@ function invia_messaggio() {
     if ($('#mes-but').hasClass('fa-paper-plane') && testo_utente.trim() !==("")) {
 
         // copio elemento template
-        var nuovo_testo_utente = $('.template .message-right').clone();
-        console.log(nuovo_testo_utente);
+        var nuovo_testo_utente = $('.template .message').clone();
+        $(nuovo_testo_utente).addClass('right');
 
         // inserisco il testo letto dall'input
         nuovo_testo_utente.find('.h4-light').text(testo_utente);
@@ -56,29 +56,6 @@ function invia_messaggio() {
         // dopo che ho scritto il mio messaggio e resettato l'input, visualizzo la risposta pre-impostata del computer
         setTimeout(genero_risposta_pc, 1000);
 
-        // Milestone 3 - cancello, se voglio, il messaggio appena creato dall'utente
-        // $('.message-options').click(function(){
-        //
-        //     var sottomenu = $(this).next('.message-options-panel');
-        //     console.log(sottomenu);
-        //     if(sottomenu.is(':visible')) {
-        //         // se sì => ho cliccato la stessa voce per chiuderlo
-        //         sottomenu.hide();
-        //     } else {
-        //         // se no => ho cliccato una nuova voce per aprirlo
-        //         // chiudo altri eventuali dropdown aperti in precedenza
-        //         $('.message-options-panel').hide();
-        //         // visualizzo il menu dropdown
-        //         sottomenu.show();
-        //     }
-        //
-        //     $('.message-destroy').click(function(){
-        //         $(this).closest('.message-right').hide();
-        //     });
-        //
-        // });
-
-
     } else {
         // $('.input').addClass('ahashakeheartache');
         // $('.input').on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e){
@@ -90,7 +67,9 @@ function invia_messaggio() {
 
 // Milestone 2 prima parte - con questa funzione faccio apparire il template2 già presente ma nascosto.
 function genero_risposta_pc() {
-    var risposta_template2 = $('.template-2 .message-left').clone();
+    var risposta_template2 = $('.template .message').clone();
+    $(risposta_template2).addClass('left');
+    $(risposta_template2).find('.h4-light').text('Sono tuo padre');
     $('.central-tab').append(risposta_template2);
 }
 
@@ -120,10 +99,13 @@ $("#search-bar").keyup(function() {
 });
 
 
+// Milestone 3 prima parte - cambio finestra
+
+
+
+
 // Milestone 3 seconda parte - cancellare messaggi
-
-$('.message-options').click(function(){
-
+$(document).on('click', '.message-options', function(){
     var sottomenu = $(this).next('.message-options-panel');
     console.log(sottomenu);
     if(sottomenu.is(':visible')) {
@@ -138,10 +120,28 @@ $('.message-options').click(function(){
     }
 
     $('.message-destroy').click(function(){
-        $(this).closest('.message-right').hide();
+        $(this).closest('.message').hide();
     });
+})
 
-});
+// $('.message-right').on('click', '.message-options', function(){
+//     var sottomenu = $(this).next('.message-options-panel');
+//     console.log(sottomenu);
+//     if(sottomenu.is(':visible')) {
+//         // se sì => ho cliccato la stessa voce per chiuderlo
+//         sottomenu.hide();
+//     } else {
+//         // se no => ho cliccato una nuova voce per aprirlo
+//         // chiudo altri eventuali dropdown aperti in precedenza
+//         $('.message-options-panel').hide();
+//         // visualizzo il menu dropdown
+//         sottomenu.show();
+//     }
+//
+//     $('.message-destroy').click(function(){
+//         $(this).closest('.message-right').hide();
+//     });
+// });
 
 
 
@@ -169,12 +169,6 @@ $('.message-options').click(function(){
 // }
 
 
-// $('.chat').click(function(){
-//     $('.window-right > div').hide();
-//     var nuova_chat_utente = $('.template-3 > div').clone();
-//     $('.window-right').append(nuova_chat_utente).show();
-//
-// });
 
 
 
