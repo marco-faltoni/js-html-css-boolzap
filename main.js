@@ -47,7 +47,7 @@ function invia_messaggio() {
         nuovo_testo_utente.find('.h4-light').text(testo_utente);
 
         // appendo il nuovo fumetto risposta utente
-        $('.central-tab').append(nuovo_testo_utente);
+        $('.central-tab.main-visible').append(nuovo_testo_utente);
 
         // faccio ritornare l'input vuoto al valore iniziale
         testo_utente = $('#message-text').val('');
@@ -71,7 +71,7 @@ function genero_risposta_pc() {
     $(risposta_template2).addClass('left');
     $(risposta_template2).find('.check-read').hide();
     $(risposta_template2).find('.h4-light').text('Sono tuo padre');
-    $('.central-tab').append(risposta_template2);
+    $('.central-tab.main-visible').append(risposta_template2);
 }
 
 
@@ -103,10 +103,10 @@ $("#search-bar").keyup(function() {
 // Milestone 3 prima parte - cambio finestra
 $('.friends-tab .chat').click(function(){
     $('.central-tab').removeClass('main-visible');
-    var data_chat = $(this).data();
+    var data_chat = $(this).attr('data-finestra-chat');
     console.log(data_chat);
 
-    $('.central-tab[data-finestra-chat="' + data_chat + '"]').addClass('main-visible');
+    $('.central-tab[data-finestra-chat="'+ data_chat +'"]').addClass('main-visible');
 });
 
 
