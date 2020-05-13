@@ -31,6 +31,7 @@ $('#message-text').keypress(function( event ) {
     }
 });
 
+// funzione che visualizza messaggio in ogni chat
 function invia_messaggio() {
         // leggo il testo inserito dall'utente
     var testo_utente = $('#message-text').val();
@@ -65,7 +66,7 @@ function invia_messaggio() {
 
 }
 
-// Milestone 2 prima parte - con questa funzione faccio apparire il template2 già presente ma nascosto.
+// Milestone 2 prima parte - con questa funzione faccio apparire la risposta automatica una volta che scrivo un messaggio.
 function genero_risposta_pc() {
     var risposta_template2 = $('.template .message').clone();
     $(risposta_template2).addClass('left');
@@ -75,7 +76,7 @@ function genero_risposta_pc() {
 }
 
 
-// Milestone 2 seconda parte - SEARCH BAR
+// Milestone 2 seconda parte - SEARCH BAR - in realtà si pul usare anche includes() anziché search() con l'espressione regolare dentro e il count associato.
 $("#search-bar").keyup(function() {
 
      // leggo il testo inserito dall'utente e imposto a 0 la conta
@@ -102,16 +103,24 @@ $("#search-bar").keyup(function() {
 
 // Milestone 3 prima parte - cambio finestra
 $('.friends-tab .chat').click(function(){
+    // rimuovo la finestra centrale attiva in questo momento
     $('.central-tab').removeClass('main-visible');
+    // rimuovo la classe 'active' presente nella chat di default
+    $('.friends-tab .chat').removeClass('active');
+    // aggiungo la classe 'active' nella chat selezionata
+    $(this).addClass('active');
+    // recupero l'attributo della chat selezionata
     var data_chat = $(this).attr('data-finestra-chat');
-    // console.log(data_chat);
     $('.central-tab[data-finestra-chat="'+ data_chat +'"]').addClass('main-visible');
 
+    // recupero il testo della chat selezionata
     var recupero_nome = $(this).find('.text-info-3 h4').text();
-    // console.log(recupero_nome);
+    // sostituisco il testo recupertato con quello presente di default nella chat centrale
     $('.text-info h4').text(recupero_nome);
 
+    // recupero l'attributo dell'immagine della chat selezionata
     var recupero_immagine = $(this).find('img').attr('src');
+    // sostituisco l'immagine recupertata con quella presente di default nella chat centrale
     $('.contact-text img').attr('src', recupero_immagine);
 });
 

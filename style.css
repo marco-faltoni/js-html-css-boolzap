@@ -275,6 +275,10 @@ i:active {
     display: block;
 }
 
+.active {
+    background-color: #eaeaea;
+}
+
 .message {
     border-radius: 15px;
     padding: 20px;
@@ -415,10 +419,6 @@ i:active {
     height: calc(100% - 70px - 50px);
     width: 100%;
     overflow-y: scroll;
-}
-
-#access {
-    display: none;
 }
 
 
