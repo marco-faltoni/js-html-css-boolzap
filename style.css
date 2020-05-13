@@ -268,7 +268,11 @@ i:active {
     background-repeat: repeat;
     padding: 10px 60px;
     overflow-y: scroll;
+    display: none;
+}
 
+.main-visible {
+    display: block;
 }
 
 .message {
@@ -403,7 +407,7 @@ i:active {
 }
 
 /* classi utili per Javascript */
-.template, .template-2 {
+.template {
     display: none;
 }
 

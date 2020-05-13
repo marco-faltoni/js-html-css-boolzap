@@ -69,6 +69,7 @@ function invia_messaggio() {
 function genero_risposta_pc() {
     var risposta_template2 = $('.template .message').clone();
     $(risposta_template2).addClass('left');
+    $(risposta_template2).find('.check-read').hide();
     $(risposta_template2).find('.h4-light').text('Sono tuo padre');
     $('.central-tab').append(risposta_template2);
 }
@@ -100,7 +101,13 @@ $("#search-bar").keyup(function() {
 
 
 // Milestone 3 prima parte - cambio finestra
+$('.friends-tab .chat').click(function(){
+    $('.central-tab').removeClass('main-visible');
+    var data_chat = $(this).data();
+    console.log(data_chat);
 
+    $('.central-tab[data-finestra-chat="' + data_chat + '"]').addClass('main-visible');
+});
 
 
 
