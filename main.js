@@ -27,8 +27,8 @@ $('#message-text').keypress(function( event ) {
 
     } else {
         // $('.input').addClass('ahashakeheartache');
-        // $(this).delay(200).removeClass('ahashaskeheartache');
     }
+    // $(this).delay(200).removeClass('ahashaskeheartache');
 });
 
 // funzione che visualizza messaggio in ogni chat
@@ -127,27 +127,32 @@ $('.friends-tab .chat').click(function(){
 
 
 // Milestone 3 seconda parte - cancellare messaggi
-$(document).on('click', '.message-options', function(){
-    var sottomenu = $(this).next('.message-options-panel');
-    console.log(sottomenu);
-    if(sottomenu.is(':visible')) {
-        // se sì => ho cliccato la stessa voce per chiuderlo
-        sottomenu.hide();
-    } else {
-        // se no => ho cliccato una nuova voce per aprirlo
-        // chiudo altri eventuali dropdown aperti in precedenza
-        $('.message-options-panel').hide();
-        // visualizzo il menu dropdown
-        sottomenu.show();
-    }
+$('.central-tab').on('click', '.message-options', function(){
+    $(this).next('.message-options-panel').toggleClass('active');
+}).on('mouseleave', '.message', function(){
+    $('.message-options-panel').removeClass('active');
+}).on('click', '.message-destroy', function(){
+    $(this).closest('.message').hide();
+});
 
-    $('.message-destroy').click(function(){
-        $(this).closest('.message').hide();
-    });
-})
 
-// $('.message-right').on('click', '.message-options', function(){
-//     var sottomenu = $(this).next('.message-options-panel');
+// VERSIONE NON SINTETIZZATA DI SOPRA
+// $('.central-tab').on('click', '.message-options', function(){
+//     $(this).next('.message-options-panel').toggleClass('active');
+// });
+//
+// $('.central-tab').on('mouseleave', '.message', function(){
+//     $('.message-options-panel').removeClass('active');
+// });
+//
+// $('.central-tab').on('click', '.message-destroy', function(){
+//     $(this).closest('.message').hide();
+// });
+// FINE VERSIONE SINTETIZZATA
+
+// VERSIONE MENO CORRETTA
+// $('.central-tab').on('click', '.message-options', function(){
+//     var sottomenu = $(this).next('.message-options-panel').toggleClass('.main-visible');
 //     console.log(sottomenu);
 //     if(sottomenu.is(':visible')) {
 //         // se sì => ho cliccato la stessa voce per chiuderlo
@@ -161,34 +166,10 @@ $(document).on('click', '.message-options', function(){
 //     }
 //
 //     $('.message-destroy').click(function(){
-//         $(this).closest('.message-right').hide();
+//         $(this).closest('.message').hide();
 //     });
-// });
-
-
-
-// function sottomenu_e_cancella() {
-//     $('.message-options').click(function(){
-//
-//         var sottomenu = $(this).next('.message-options-panel');
-//         console.log(sottomenu);
-//         if(sottomenu.is(':visible')) {
-//             // se sì => ho cliccato la stessa voce per chiuderlo
-//             sottomenu.hide();
-//         } else {
-//             // se no => ho cliccato una nuova voce per aprirlo
-//             // chiudo altri eventuali dropdown aperti in precedenza
-//             $('.message-options-panel').hide();
-//             // visualizzo il menu dropdown
-//             sottomenu.show();
-//         }
-//
-//         $('.message-destroy').click(function(){
-//             $(this).closest('.message-right').hide();
-//         });
-//
-//     });
-// }
+// })
+// FINE VERSIONE MENO CORRETTA
 
 
 

@@ -421,6 +421,9 @@ i:active {
     overflow-y: scroll;
 }
 
+.active {
+    display: block;
+}
 
 
 /* animazione sull'input nel caso non inserisco nessuna parola da inviare */
