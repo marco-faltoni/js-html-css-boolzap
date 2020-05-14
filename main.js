@@ -55,8 +55,9 @@ function invia_messaggio() {
         // $('#mes-but').removeClass('fa-paper-plane').addClass('fa-microphone');
 
         // dopo che ho scritto il mio messaggio e resettato l'input, visualizzo la risposta pre-impostata del computer
-        setTimeout(genero_risposta_pc, 1000);
-
+        $('.text-info h5').text('Sto Scrivendo...')
+        $('.chat.active .text-info-3 h5').text('Sto Scrivendo...')
+        setTimeout(genero_risposta_pc, 1300);
     } else {
         // $('.input').addClass('ahashakeheartache');
         // $('.input').on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e){
@@ -73,6 +74,9 @@ function genero_risposta_pc() {
     $(risposta_template2).find('.check-read').hide();
     $(risposta_template2).find('.h4-light').text('Sono tuo padre');
     $('.central-tab.main-visible').append(risposta_template2);
+    var testo_template2 = $(risposta_template2).find('.h4-light').text();
+    $('.chat.active .text-info-3 h5').text(testo_template2)
+    $('.text-info h5').text('Ultimo accesso oggi 12:45')
 }
 
 
@@ -128,9 +132,9 @@ $('.friends-tab .chat').click(function(){
 
 // Milestone 3 seconda parte - cancellare messaggi
 $('.central-tab').on('click', '.message-options', function(){
-    $(this).next('.message-options-panel').toggleClass('active');
+    $(this).next('.message-options-panel').toggleClass('active-2');
 }).on('mouseleave', '.message', function(){
-    $('.message-options-panel').removeClass('active');
+    $('.message-options-panel').removeClass('active-2');
 }).on('click', '.message-destroy', function(){
     $(this).closest('.message').hide();
 });
@@ -138,11 +142,11 @@ $('.central-tab').on('click', '.message-options', function(){
 
 // VERSIONE NON SINTETIZZATA DI SOPRA
 // $('.central-tab').on('click', '.message-options', function(){
-//     $(this).next('.message-options-panel').toggleClass('active');
+//     $(this).next('.message-options-panel').toggleClass('active-2');
 // });
 //
 // $('.central-tab').on('mouseleave', '.message', function(){
-//     $('.message-options-panel').removeClass('active');
+//     $('.message-options-panel').removeClass('active-2');
 // });
 //
 // $('.central-tab').on('click', '.message-destroy', function(){
