@@ -3,13 +3,13 @@
 
 // rimuovo la classe/icona microfono e metto quella dell'invio quando sono in focus sull'input
 $('#message-text').focus(function() {
-    $('#mes-but').removeClass('fa-microphone').addClass('fa-paper-plane');
+    $('#mes-but').toggleClass('fa-microphone fa-paper-plane');
 
 });
 
 // ri-assegno la classe iniziale all'icona una volta usate le due funzioni sotto (click o invio tastiera)
 $('#message-text').blur(function() {
-    $('#mes-but').removeClass('fa-paper-plane').addClass('fa-microphone');
+    $('#mes-but').toggleClass('fa-paper-plane fa-microphone');
 });
 
 // funzione che si attiva quando clicco sull'icona "invio"
@@ -23,22 +23,18 @@ $('#message-text').keyup(function( event ) {
 
     // imposto come condizioni che venga premuto il tasto invio, che ci sia la classe/icona di invio e che il testo utente non sia vuoto, altrimenti non entra nella condizione
     if ( event.which == 13 && testo_utente.trim() !==("")) {
-
+        // richiamo la funzione che mi stampa il template con quello che scrive l'utente
         invia_messaggio();
 
-    } else if (testo_utente.trim() ==("")){
-        $('.input').addClass('ahashakeheartache');
-
-        setTimeout(function(){
-            $('.input').removeClass('ahashakeheartache');
-        }, 1000);
-
+    } else if (testo_utente.trim() ==("") && event.which !== 8){
+        // se le condizioni sopra non sono accettate, ovvero se non scrivo nulla nell'input, faccio visualizzare l'animazione di errore sull'input stesso
+        shake_error_animation();
     }
 });
 
 // funzione che visualizza messaggio in ogni chat
 function invia_messaggio() {
-        // leggo il testo inserito dall'utente
+    // leggo il testo inserito dall'utente
     var testo_utente = $('#message-text').val();
     console.log(testo_utente);
 
@@ -49,25 +45,40 @@ function invia_messaggio() {
         var nuovo_testo_utente = $('.template .message').clone();
         $(nuovo_testo_utente).addClass('right');
 
-        // inserisco il testo letto dall'input
-        nuovo_testo_utente.find('.h4-light').text(testo_utente);
-
         // appendo il nuovo fumetto risposta utente
         $('.central-tab.main-visible').append(nuovo_testo_utente);
+
+        // inserisco il testo letto dall'input
+        nuovo_testo_utente.find('.h4-light').text(testo_utente);
 
         // faccio ritornare l'input vuoto al valore iniziale
         testo_utente = $('#message-text').val('');
         // $('#mes-but').removeClass('fa-paper-plane').addClass('fa-microphone');
 
         // dopo che ho scritto il mio messaggio e resettato l'input, visualizzo la risposta pre-impostata del computer
-        $('.text-info h5').text('Sto Scrivendo...')
-        $('.chat.active .text-info-3 h5').text('Sto Scrivendo...')
-        setTimeout(genero_risposta_pc, 1300);
-        $(".central-tab.main-visible").animate({ scrollTop: $('.central-tab.main-visible .message:last-child').offset().top}, 1000);
+        $('.text-info h5').text('Sto Scrivendo...');
+        $('.chat.active .text-info-3 h5').text('Sto Scrivendo...');
+        scroll_bar();
+        setTimeout(genero_risposta_pc, 1500);
 
+    } else if ($('#mes-but').hasClass('fa-paper-plane') && testo_utente.trim() ==("")){
+        // se le condizioni sopra non sono accettate, ovvero se non scrivo nulla nell'input, faccio visualizzare l'animazione di errore sull'input stesso
+        shake_error_animation();
     }
 }
 
+// funzione che anima l'input nel caso non si scriva nulla dentro
+function shake_error_animation() {
+    $('.input').addClass('ahashakeheartache');
+    setTimeout(function(){
+        $('.input').removeClass('ahashakeheartache');
+    }, 200);
+}
+
+// funzione che mi fa lo scroll in basso della chat centrale ogni volta che scrivo un messaggio
+function scroll_bar() {
+    $(".central-tab.main-visible").animate({ scrollTop: $('.central-tab.main-visible').prop("scrollHeight")}, 1000);
+}
 
 
 // Milestone 2 prima parte - con questa funzione faccio apparire la risposta automatica una volta che scrivo un messaggio.
@@ -80,9 +91,8 @@ function genero_risposta_pc() {
     var testo_template2 = $(risposta_template2).find('.h4-light').text();
     $('.chat.active .text-info-3 h5').text(testo_template2);
     $('.text-info h5').text('Ultimo accesso oggi 12:45');
-    $(".central-tab.main-visible").animate({ scrollTop: $('.central-tab.main-visible .message:last-child').offset().top}, 1000);
+    scroll_bar();
 }
-
 
 // Milestone 2 seconda parte - SEARCH BAR - in realtà si pul usare anche includes() anziché search() con l'espressione regolare dentro e il count associato.
 $("#search-bar").keyup(function() {
@@ -180,7 +190,6 @@ $('.central-tab').on('click', '.message-options', function(){
 // FINE VERSIONE MENO CORRETTA
 
 
-$(".central-tab.main-visible").animate({ scrollTop: $('.message:last-child').prop("scrollHeight")}, 1000);
 
 // $('.central-tab.main-visible').animate({
 //     scrollTop: $('.message:last-child').offset().top
