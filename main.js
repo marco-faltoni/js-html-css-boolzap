@@ -63,6 +63,7 @@ function invia_messaggio() {
         $('.text-info h5').text('Sto Scrivendo...')
         $('.chat.active .text-info-3 h5').text('Sto Scrivendo...')
         setTimeout(genero_risposta_pc, 1300);
+        $(".central-tab.main-visible").animate({ scrollTop: $('.central-tab.main-visible .message:last-child').offset().top}, 1000);
 
     }
 }
@@ -79,7 +80,7 @@ function genero_risposta_pc() {
     var testo_template2 = $(risposta_template2).find('.h4-light').text();
     $('.chat.active .text-info-3 h5').text(testo_template2);
     $('.text-info h5').text('Ultimo accesso oggi 12:45');
-    $(".central-tab.main-visible").animate({ scrollTop: $(risposta_template2).prop("scrollHeight")}, 1000);
+    $(".central-tab.main-visible").animate({ scrollTop: $('.central-tab.main-visible .message:last-child').offset().top}, 1000);
 }
 
 
