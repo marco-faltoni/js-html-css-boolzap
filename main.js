@@ -16,18 +16,23 @@ $('#message-text').blur(function() {
 $('.microphone').mousedown(invia_messaggio);
 
 // funzione che si attiva quando clicco il tasto "invio" sulla tastiera
-$('#message-text').keypress(function( event ) {
-
+$('#message-text').keyup(function( event ) {
+    // debugger;
     // leggo il testo inserito dall'utente
     var testo_utente = $('#message-text').val();
-    $('.input').delay(200).removeClass('ahashakeheartache');
+
     // imposto come condizioni che venga premuto il tasto invio, che ci sia la classe/icona di invio e che il testo utente non sia vuoto, altrimenti non entra nella condizione
-    if ( event.which == 13 && $('#mes-but').hasClass('fa-paper-plane') && testo_utente.trim() !==("")) {
+    if ( event.which == 13 && testo_utente.trim() !==("")) {
 
         invia_messaggio();
 
-    } else {
+    } else if (testo_utente.trim() ==("")){
         $('.input').addClass('ahashakeheartache');
+
+        setTimeout(function(){
+            $('.input').removeClass('ahashakeheartache');
+        }, 1000);
+
     }
 });
 
@@ -58,14 +63,11 @@ function invia_messaggio() {
         $('.text-info h5').text('Sto Scrivendo...')
         $('.chat.active .text-info-3 h5').text('Sto Scrivendo...')
         setTimeout(genero_risposta_pc, 1300);
-    } else {
-        // $('.input').addClass('ahashakeheartache');
-        // $('.input').on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e){
-        //     $('.input').delay(200).removeClass('ahashakeheartache');
-        // });
-    }
 
+    }
 }
+
+
 
 // Milestone 2 prima parte - con questa funzione faccio apparire la risposta automatica una volta che scrivo un messaggio.
 function genero_risposta_pc() {
@@ -75,8 +77,9 @@ function genero_risposta_pc() {
     $(risposta_template2).find('.h4-light').text('Sono tuo padre');
     $('.central-tab.main-visible').append(risposta_template2);
     var testo_template2 = $(risposta_template2).find('.h4-light').text();
-    $('.chat.active .text-info-3 h5').text(testo_template2)
-    $('.text-info h5').text('Ultimo accesso oggi 12:45')
+    $('.chat.active .text-info-3 h5').text(testo_template2);
+    $('.text-info h5').text('Ultimo accesso oggi 12:45');
+    $(".central-tab.main-visible").animate({ scrollTop: $(risposta_template2).prop("scrollHeight")}, 1000);
 }
 
 
@@ -176,6 +179,11 @@ $('.central-tab').on('click', '.message-options', function(){
 // FINE VERSIONE MENO CORRETTA
 
 
+$(".central-tab.main-visible").animate({ scrollTop: $('.message:last-child').prop("scrollHeight")}, 1000);
+
+// $('.central-tab.main-visible').animate({
+//     scrollTop: $('.message:last-child').offset().top
+// }, 500);
 
 
 
