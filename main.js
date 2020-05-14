@@ -4,6 +4,7 @@
 // rimuovo la classe/icona microfono e metto quella dell'invio quando sono in focus sull'input
 $('#message-text').focus(function() {
     $('#mes-but').removeClass('fa-microphone').addClass('fa-paper-plane');
+
 });
 
 // ri-assegno la classe iniziale all'icona una volta usate le due funzioni sotto (click o invio tastiera)
@@ -19,16 +20,15 @@ $('#message-text').keypress(function( event ) {
 
     // leggo il testo inserito dall'utente
     var testo_utente = $('#message-text').val();
-
+    $('.input').delay(200).removeClass('ahashakeheartache');
     // imposto come condizioni che venga premuto il tasto invio, che ci sia la classe/icona di invio e che il testo utente non sia vuoto, altrimenti non entra nella condizione
     if ( event.which == 13 && $('#mes-but').hasClass('fa-paper-plane') && testo_utente.trim() !==("")) {
 
         invia_messaggio();
 
     } else {
-        // $('.input').addClass('ahashakeheartache');
+        $('.input').addClass('ahashakeheartache');
     }
-    // $(this).delay(200).removeClass('ahashaskeheartache');
 });
 
 // funzione che visualizza messaggio in ogni chat
