@@ -40,8 +40,18 @@ function invia_messaggio() {
 
     // imposto come condizioni che ci sia la classe/icona di invio e che il testo utente non sia vuoto, altrimenti non entra nella condizione
     if ($('#mes-but').hasClass('fa-paper-plane') && testo_utente.trim() !==("")) {
+        // VECCHIO METODO SENZA HANDLEBARS
+        // // copio elemento template
+        // var nuovo_testo_utente = $('.template .message').clone();
+        // $(nuovo_testo_utente).addClass('right');
+        //
+        // // appendo il nuovo fumetto risposta utente
+        // $('.central-tab.main-visible').append(nuovo_testo_utente);
+        //
+        // // inserisco il testo letto dall'input
+        // nuovo_testo_utente.find('.h4-light').text(testo_utente);
 
-        // copio elemento template
+        // METODO CON HANDLEBARS
         $('#template-handlebars').find('.message').addClass('right');
 
         var template_html = $('#template-handlebars').html();
@@ -53,15 +63,10 @@ function invia_messaggio() {
 
         var html = template(data);
         console.log(html);
-        // $(nuovo_testo_utente).addClass('right');
 
         // appendo il nuovo fumetto risposta utente
         $('.central-tab.main-visible').append(html);
-
-        // // inserisco il testo letto dall'input
-        // nuovo_testo_utente.find('.h4-light').text(testo_utente);
-
-
+        $('.toChange').removeClass('toChange').addClass('right');
 
         // faccio ritornare l'input vuoto al valore iniziale
         testo_utente = $('#message-text').val('');
@@ -95,13 +100,36 @@ function scroll_bar() {
 
 // Milestone 2 prima parte - con questa funzione faccio apparire la risposta automatica una volta che scrivo un messaggio.
 function genero_risposta_pc() {
-    var risposta_template2 = $('.template .message').clone();
-    $(risposta_template2).addClass('left');
-    $(risposta_template2).find('.check-read').hide();
-    $(risposta_template2).find('.h4-light').text('Sono tuo padre');
-    $('.central-tab.main-visible').append(risposta_template2);
-    var testo_template2 = $(risposta_template2).find('.h4-light').text();
-    $('.chat.active .text-info-3 h5').text(testo_template2);
+    // VECCHIO METODO SENZA HANDLEBARS
+    // var risposta_template2 = $('.template .message').clone();
+    // $(risposta_template2).addClass('left');
+    // $(risposta_template2).find('.check-read').hide();
+    // $(risposta_template2).find('.h4-light').text('Sono tuo padre');
+    // $('.central-tab.main-visible').append(risposta_template2);
+    // var testo_template2 = $(risposta_template2).find('.h4-light').text();
+    // $('.chat.active .text-info-3 h5').text(testo_template2);
+
+    // METODO CON HANDLEBARS
+    $('#template-handlebars').find('.message').addClass('right');
+
+    var template_html = $('#template-handlebars').html();
+    var template = Handlebars.compile(template_html);
+    var testo_pc = 'Sono tuo Padre';
+
+    var data = {
+        testo : testo_pc
+    };
+
+    var html = template(data);
+
+
+    // appendo il nuovo fumetto risposta utente
+    $('.central-tab.main-visible').append(html);
+    $('.toChange').find('.check-read').hide();
+    $('.toChange').removeClass('toChange').addClass('left');
+
+
+    $('.chat.active .text-info-3 h5').text(testo_pc);
     $('.text-info h5').text('Ultimo accesso oggi 12:45');
     scroll_bar();
 }
