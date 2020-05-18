@@ -42,18 +42,24 @@ function invia_messaggio() {
     if ($('#mes-but').hasClass('fa-paper-plane') && testo_utente.trim() !==("")) {
 
         // copio elemento template
+        $('#template-handlebars').find('.message').addClass('right');
+
         var template_html = $('#template-handlebars').html();
         var template = Handlebars.compile(template_html);
 
+        var data = {
+            testo : testo_utente
+        };
 
-        var nuovo_testo_utente = $('.template .message').clone();
-        $(nuovo_testo_utente).addClass('right');
+        var html = template(data);
+        console.log(html);
+        // $(nuovo_testo_utente).addClass('right');
 
         // appendo il nuovo fumetto risposta utente
-        $('.central-tab.main-visible').append(nuovo_testo_utente);
+        $('.central-tab.main-visible').append(html);
 
-        // inserisco il testo letto dall'input
-        nuovo_testo_utente.find('.h4-light').text(testo_utente);
+        // // inserisco il testo letto dall'input
+        // nuovo_testo_utente.find('.h4-light').text(testo_utente);
 
 
 
