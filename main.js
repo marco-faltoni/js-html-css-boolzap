@@ -42,6 +42,10 @@ function invia_messaggio() {
     if ($('#mes-but').hasClass('fa-paper-plane') && testo_utente.trim() !==("")) {
 
         // copio elemento template
+        var template_html = $('#template-handlebars').html();
+        var template = Handlebars.compile(template_html);
+
+
         var nuovo_testo_utente = $('.template .message').clone();
         $(nuovo_testo_utente).addClass('right');
 
@@ -50,6 +54,8 @@ function invia_messaggio() {
 
         // inserisco il testo letto dall'input
         nuovo_testo_utente.find('.h4-light').text(testo_utente);
+
+
 
         // faccio ritornare l'input vuoto al valore iniziale
         testo_utente = $('#message-text').val('');
