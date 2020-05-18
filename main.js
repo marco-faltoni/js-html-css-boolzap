@@ -52,8 +52,6 @@ function invia_messaggio() {
         // nuovo_testo_utente.find('.h4-light').text(testo_utente);
 
         // METODO CON HANDLEBARS
-        $('#template-handlebars').find('.message').addClass('right');
-
         var template_html = $('#template-handlebars').html();
         var template = Handlebars.compile(template_html);
 
@@ -110,8 +108,6 @@ function genero_risposta_pc() {
     // $('.chat.active .text-info-3 h5').text(testo_template2);
 
     // METODO CON HANDLEBARS
-    $('#template-handlebars').find('.message').addClass('right');
-
     var template_html = $('#template-handlebars').html();
     var template = Handlebars.compile(template_html);
     var testo_pc = 'Sono tuo Padre';
